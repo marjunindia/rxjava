@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import java.util.concurrent.TimeUnit;
+
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -20,17 +22,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Create an Observable
-        Observable<Integer> observable = Observable.range(0, 5);
+        Observable<Long> observable = Observable.interval(1, TimeUnit.SECONDS);
 
         // Create an Observer
-        Observer<Integer> observer = new Observer<Integer>() {
+        Observer<Long> observer = new Observer<Long>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.e(TAG, "onSubscribe: ");
             }
 
             @Override
-            public void onNext(Integer value) {
+            public void onNext(Long value) {
                 Log.e(TAG, "onNext: " + value);
             }
 
