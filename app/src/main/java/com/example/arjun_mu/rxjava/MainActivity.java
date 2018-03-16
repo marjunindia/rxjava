@@ -11,8 +11,8 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
 public class MainActivity extends AppCompatActivity {
-        // https://code.tutsplus.com/tutorials/getting-started-with-rxjava-20-for-android--cms-28345
 
+    // https://code.tutsplus.com/tutorials/getting-started-with-rxjava-20-for-android--cms-28345
     private static final String TAG = "MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,31 +20,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Create an Observable
-        Observable<Integer> observable = Observable.create(new ObservableOnSubscribe<Integer>() {
-            @Override
-            public void subscribe(ObservableEmitter<Integer> e) throws Exception {
-
-                e.onNext(1);
-                e.onNext(2);
-                e.onNext(3);
-                e.onNext(4);
-
-                //Once the Observable has emitted all items in the sequence, call onComplete//
-                e.onComplete();
-            }
-        });
+        Observable<String> observable = Observable.just("Hello World!");
 
 
         // Create an Observer
-
-        Observer<Integer> observer = new Observer<Integer>() {
+        Observer<String> observer = new Observer<String>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.e(TAG, "onSubscribe: ");
             }
 
             @Override
-            public void onNext(Integer value) {
+            public void onNext(String value) {
                 Log.e(TAG, "onNext: " + value);
             }
 
