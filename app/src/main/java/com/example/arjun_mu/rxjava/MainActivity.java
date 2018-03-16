@@ -20,18 +20,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Create an Observable
-        Observable<String> observable = Observable.just("Hello World!");
-
+        Observable<Integer> observable = Observable.range(0, 5);
 
         // Create an Observer
-        Observer<String> observer = new Observer<String>() {
+        Observer<Integer> observer = new Observer<Integer>() {
             @Override
             public void onSubscribe(Disposable d) {
                 Log.e(TAG, "onSubscribe: ");
             }
 
             @Override
-            public void onNext(String value) {
+            public void onNext(Integer value) {
                 Log.e(TAG, "onNext: " + value);
             }
 
